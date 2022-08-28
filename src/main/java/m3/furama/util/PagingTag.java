@@ -1,7 +1,5 @@
 package m3.furama.util;
 
-import m3.furama.model.Customer;
-
 import javax.servlet.ServletRequest;
 import javax.servlet.jsp.tagext.TagSupport;
 
@@ -26,15 +24,23 @@ public class PagingTag extends TagSupport {
     public int doStartTag() {
         try {
             ServletRequest request= pageContext.getRequest();
+
+            if(search.equals(":") || search == null){
+                search = null;
+            }
+            else{
+                search = "&q=" + search;
+            }
+
             request.setAttribute("name", name);
             request.setAttribute("search", search);
-            Page<Customer> a= (Page<Customer>) params;
-            int bbb= a.getTotalPages();
             request.setAttribute("result", params);
-            pageContext.include("/layout/paging.jsp");
+
+            pageContext.include("/view/element/paging.jsp");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
         return SKIP_BODY;
     }
 }

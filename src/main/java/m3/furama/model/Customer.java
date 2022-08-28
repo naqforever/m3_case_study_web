@@ -9,10 +9,10 @@ public class Customer {
     private String phone;
     private String email;
     private String address;
-
+    private int customerTypeId;
     private CustomerType customerType;
 
-    public Customer(int id, String fullName, String birthday, Boolean gender, String identifyNumber, String phone, String email, String address, CustomerType customerType) {
+    public Customer(int id, String fullName, String birthday, Boolean gender, String identifyNumber, String phone, String email, String address, int customerTypeId, CustomerType customerType) {
         this.id = id;
         this.fullName = fullName;
         this.birthday = birthday;
@@ -21,6 +21,7 @@ public class Customer {
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.customerTypeId = customerTypeId;
         this.customerType = customerType;
     }
 
@@ -86,6 +87,14 @@ public class Customer {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public int getCustomerTypeId() {
+        return customerTypeId;
+    }
+
+    public void setCustomerTypeId(int customerTypeId) {
+        this.customerTypeId = customerTypeId;
     }
 
     public CustomerType getCustomerType() {

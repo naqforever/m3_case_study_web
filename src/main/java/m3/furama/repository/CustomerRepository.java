@@ -36,13 +36,18 @@ public class CustomerRepository implements BaseRepository<Customer> {
     }
 
     @Override
-    public void save() {
-
+    public int save(Customer customer) {
+        return 0;
     }
 
     @Override
     public List<Customer> find(String q) {
         return null;
+    }
+
+    @Override
+    public int delete(int id) {
+        return 0;
     }
 
     private Customer getCustomer(ResultSet rs) throws SQLException {
@@ -58,7 +63,7 @@ public class CustomerRepository implements BaseRepository<Customer> {
         String customerTypeName = rs.getString(11);
 
         CustomerType customerType = new CustomerType(customerTypeId, customerTypeName);
-        Customer customer = new Customer(id, fullName, birthday, gender, identifyNumber, phone, email, address, customerType);
+        Customer customer = new Customer(id, fullName, birthday, gender, identifyNumber, phone, email, address, customerTypeId, customerType);
         return customer;
     }
 

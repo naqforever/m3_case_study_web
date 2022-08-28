@@ -1,6 +1,7 @@
 package m3.furama.service;
 
 import m3.furama.model.Customer;
+import m3.furama.model.CustomerType;
 import m3.furama.repository.CustomerRepository;
 import m3.furama.util.Page;
 import m3.furama.util.Pageable;
@@ -16,13 +17,18 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void save() {
-
+    public int save(Customer customer) {
+        return customerRepository.save(customer);
     }
 
     @Override
     public List<Customer> find(String q) {
         return null;
+    }
+
+    @Override
+    public int delete(int id) {
+        return customerRepository.delete(id);
     }
 
     @Override

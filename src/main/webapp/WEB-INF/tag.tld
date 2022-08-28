@@ -2,7 +2,7 @@
     <tlib-version>1.0</tlib-version>
     <jsp-version>2.0</jsp-version>
     <short-name>Test TLD</short-name>
-    <uri>customPagingTag</uri>
+    <uri>customTag</uri>
 
     <tag>
         <name>paging</name>
@@ -22,4 +22,20 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+
+    <tag>
+        <name>delete</name>
+        <tag-class>m3.furama.util.DeleteTag</tag-class>
+        <attribute>
+            <name>idItem</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>nameItem</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
 </taglib>

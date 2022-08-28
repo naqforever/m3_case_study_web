@@ -1,16 +1,8 @@
 package m3.furama.util;
 
 public class Pageable {
-    private int pageNum;
-    private int pageSize;
-
-    public Pageable() {
-    }
-
-    public Pageable(int pageNum, int pageSize) {
-        this.pageNum = pageNum;
-        this.pageSize = pageSize;
-    }
+    private int pageNum = 1;
+    private int pageSize = 5;
 
     public int getPageNum() {
         return pageNum;

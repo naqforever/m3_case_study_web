@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface BaseService<T> {
     List<T> findAll();
-    void save();
+    int save(T t);
     List<T> find(String q);
+    int delete(int id);
 }
