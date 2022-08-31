@@ -7,7 +7,7 @@
             <h3><b>Customer</b></h3>
         </div>
         <div class="col-4">
-            <a href="#addEditModal" class="btn btn-success float-end me-2 add" data-toggle="modal"><span>Add New</span></a>
+            <button class="btn btn-success float-end me-2 add" data-bs-toggle="modal" data-bs-target="#addEditModal">Add New</button>
         </div>
 
     </div>
@@ -38,3 +38,57 @@
     </tbody>
 </table>
     <cg:paging name="customer" params="${result}" search="${by}:${val}"></cg:paging>
+
+<div class="modal fade" id="addEditModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <form method="post" action="/customer">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Customer</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input name="id" hidden value="0">
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input class="form-control" name="fullName"/>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Birthday</label>
+                        <input type="text" class="date form-control" name="birthday"/>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Gender</label>
+                        <input type="radio" name="gender" value="Male" />Female
+                        <input type="radio" name="gender" value="Female" />Male
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Identify Number</label>
+                        <input class="form-control" name="identifyNumber"/>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phone</label>
+                        <input class="form-control" name="phone"/>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input class="form-control" name="email"/>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Address</label>
+                        <input class="form-control" name="address"/>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Customer Type</label>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

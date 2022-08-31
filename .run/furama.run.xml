@@ -3,7 +3,7 @@
     <option name="OPEN_IN_BROWSER" value="false" />
     <option name="UPDATING_POLICY" value="restart-server" />
     <deployment>
-      <artifact name="m3_case_study_web:war">
+      <artifact name="furama:war">
         <settings>
           <option name="CONTEXT_PATH" value="" />
         </settings>
@@ -84,6 +84,7 @@
       <option name="Make" enabled="true" />
       <option name="BuildArtifacts" enabled="true">
         <artifact name="m3_case_study_web:war" />
+        <artifact name="furama:war" />
       </option>
     </method>
   </configuration>
