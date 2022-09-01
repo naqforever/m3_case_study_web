@@ -10,16 +10,23 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class CustomerRepository implements BaseRepository<Customer> {
     private final String FIND_ALL = "select * from customer c join customer_type t on c.customer_type_id = t.id order by c.id desc";
     private final String FIND_ALL_PAGING = "select * from customer c join customer_type t on c.customer_type_id = t.id order by c.id desc limit ?lim offset ?off";
+    private static final String INSERT = "insert into customer (fullname, birthday, gender, identify_number, phone" +
+            ", email, address, customer_type_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String UPDATE = "update customer set fullname = ?,  birthday = ?, gender=?, identify_number =? , phone=?" +
+            ", email = ?, address = ?, customer_type_id = ? where id = ?";
 //    private static final String FIND_BY = "select * from product p join category c on p.category_id = c.id where p.$ like ?";
 //    private static final String FIND = "select * from product p join category c on p.category_id = c.id where p.name like '%?%' or p.color like '%?%' or p.price like '%?%' or c.name like '%?%'";
 //    private static final String CREATE = "insert into product (name, color, price, category_id) values (?,?,?,?)";
-//    private static final String DELETE = "delete from product where id = ?";
+    private static final String DELETE = "delete from customer where id = ?";
 
     @Override
     public List<Customer> findAll() {
@@ -37,6 +44,24 @@ public class CustomerRepository implements BaseRepository<Customer> {
 
     @Override
     public int save(Customer customer) {
+        try (PreparedStatement st = Config.getConnection().prepareStatement(customer.getId() > 0 ? UPDATE : INSERT)) {
+            st.setString(1, customer.getFullName());
+            st.setDate(2, java.sql.Date.valueOf(customer.getBirthday()));
+            st.setBoolean(3, customer.getGender());
+            st.setString(4, customer.getIdentifyNumber());
+            st.setString(5, customer.getPhone());
+            st.setString(6, customer.getEmail());
+            st.setString(7, customer.getAddress());
+            st.setInt(8, customer.getCustomerTypeId());
+            if (customer.getId() > 0) {
+                st.setInt(9, customer.getId());
+            }
+
+            return st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return 0;
     }
 
@@ -47,13 +72,21 @@ public class CustomerRepository implements BaseRepository<Customer> {
 
     @Override
     public int delete(int id) {
+        try(PreparedStatement st = Config.getConnection().prepareStatement(DELETE)){
+            st.setInt(1, id);
+            return st.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
         return 0;
     }
 
     private Customer getCustomer(ResultSet rs) throws SQLException {
         int id = rs.getInt(1);
         String fullName = rs.getString(2);
-        String birthday = rs.getString(3);
+        Date dateBirthday = rs.getDate(3);
+        LocalDate birthday = new java.sql.Date(dateBirthday.getTime()).toLocalDate();
         Boolean gender = rs.getBoolean(4);
         String identifyNumber = rs.getString(5);
         String phone = rs.getString(6);
@@ -70,7 +103,7 @@ public class CustomerRepository implements BaseRepository<Customer> {
     private List<Customer> findAll(String query) {
         List<Customer> result = new ArrayList<>();
 
-        try (Connection connection = Configuration.getConnection();
+        try (Connection connection = Config.getConnection();
              PreparedStatement st = connection.prepareStatement(query)) {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {

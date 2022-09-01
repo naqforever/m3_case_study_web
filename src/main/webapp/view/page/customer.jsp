@@ -3,11 +3,13 @@
 
 <div class="table-title mt-3">
     <div class="row">
-        <div class="col-8">
+        <div class="col">
             <h3><b>Customer</b></h3>
         </div>
         <div class="col-4">
-            <button class="btn btn-success float-end me-2 add" data-bs-toggle="modal" data-bs-target="#addEditModal">Add New</button>
+            <button class="btn btn-success float-end me-2" data-bs-toggle="modal" data-bs-target="#addEditModal">Add
+                New
+            </button>
         </div>
 
     </div>
@@ -31,20 +33,24 @@
             <td>${c.email}</td>
             <td>${c.customerType.name}</td>
             <td>
+                <button onclick="showEditCustomer('${c.id}', '${c.fullName}', '${c.birthday}', '${c.gender}'
+                        , '${c.identifyNumber}', '${c.phone}', '${c.email}', '${c.address}', '${c.customerTypeId}')"
+                        class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addEditModal">Edit
+                </button>
                 <cg:delete idItem="${c.id}" nameItem="${c.fullName}"></cg:delete>
             </td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
-    <cg:paging name="customer" params="${result}" search="${by}:${val}"></cg:paging>
+<cg:paging name="customer" params="${result}" search="${by}:${val}"></cg:paging>
 
 <div class="modal fade" id="addEditModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <form method="post" action="/customer">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Customer</h5>
+                    <h5 class="modal-title">Create Customer</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -55,12 +61,18 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Birthday</label>
-                        <input type="text" class="date form-control" name="birthday"/>
+                        <input type="date" class="form-control" name="birthday"/>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Gender</label>
-                        <input type="radio" name="gender" value="Male" />Female
-                        <input type="radio" name="gender" value="Female" />Male
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" id="rdMale" name="gender" value="true">Male
+                            <label class="form-check-label" for="rdMale"></label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" id="rdFemale" name="gender" value="false">Female
+                            <label class="form-check-label" for="rdFemale"></label>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Identify Number</label>
@@ -80,7 +92,13 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Customer Type</label>
-
+                        <select name="customerType" class="form-select" aria-label="Default select example">
+                            <option>--- select customer type ---</option>
+                            <c:forEach var="ct" items="${customerTypes}">
+                                <option value="${ct.id}"
+                                >${ct.name}</option>
+                            </c:forEach>
+                        </select>
                     </div>
 
                 </div>

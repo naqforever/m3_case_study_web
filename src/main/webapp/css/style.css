@@ -2,6 +2,10 @@ header{
     height:50px;
 }
 
+.col-1-5 {
+    flex: 0 0 12.5%;
+}
+
 .navbar li{
     padding-left: 120px;
 }

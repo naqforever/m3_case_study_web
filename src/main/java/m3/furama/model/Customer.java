@@ -1,9 +1,11 @@
 package m3.furama.model;
 
+import java.time.LocalDate;
+
 public class Customer {
     private int id;
     private String fullName;
-    private String birthday;
+    private LocalDate birthday;
     private Boolean gender;
     private String identifyNumber;
     private String phone;
@@ -12,7 +14,7 @@ public class Customer {
     private int customerTypeId;
     private CustomerType customerType;
 
-    public Customer(int id, String fullName, String birthday, Boolean gender, String identifyNumber, String phone, String email, String address, int customerTypeId, CustomerType customerType) {
+    public Customer(int id, String fullName, LocalDate birthday, Boolean gender, String identifyNumber, String phone, String email, String address, int customerTypeId, CustomerType customerType) {
         this.id = id;
         this.fullName = fullName;
         this.birthday = birthday;
@@ -41,11 +43,11 @@ public class Customer {
         this.fullName = fullName;
     }
 
-    public String getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 

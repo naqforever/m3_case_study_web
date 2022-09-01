@@ -15,7 +15,7 @@
     <tiles:insertAttribute name="header" />
     <main class="row">
         <tiles:insertAttribute name="menu" />
-        <div class="col-11">
+        <div class="col">
             <tiles:insertAttribute name="body" />
         </div>
     </main>
