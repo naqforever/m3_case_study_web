@@ -7,11 +7,10 @@
             <h3><b>Customer</b></h3>
         </div>
         <div class="col-4">
-            <button class="btn btn-success float-end me-2" data-bs-toggle="modal" data-bs-target="#addEditModal">Add
-                New
+            <button onclick="resetCustomerForm()" class="btn btn-success float-end me-2" data-bs-toggle="modal"
+                    data-bs-target="#addEditModal">Add New
             </button>
         </div>
-
     </div>
 </div>
 

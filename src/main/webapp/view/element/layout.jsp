@@ -19,7 +19,7 @@
             <tiles:insertAttribute name="body" />
         </div>
     </main>
-    <tiles:insertAttribute name="footer" />
+<%--    <tiles:insertAttribute name="footer" />--%>
 </div>
 
 <script src="../../js/main.js"></script>

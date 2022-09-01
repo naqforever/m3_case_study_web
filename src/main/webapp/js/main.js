@@ -17,3 +17,8 @@ function showEditCustomer(id, fullName, birthday, gender, identifyNumber, phone,
         }
     });
 }
+
+function resetCustomerForm() {
+    $("input[name='id']").val("0");
+    $("input[name='fullName'],input[name='birthday'],input[name='identifyNumber'],input[name='phone'],input[name='email'],input[name='address']").val("");
+}
