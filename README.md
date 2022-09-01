@@ -4,7 +4,7 @@
 -   Run script cs_m3 in db directory for create schema and data on database
 -   Set up Tomcat and run application
 
-# Case study
+# Case study requirements
 
 Học viên sử dụng những kiến thức đã học ở module **JSP & Servlet** để
 viết ứng dụng quản lý Customer, Employees và các dịch vụ của khu nghỉ
