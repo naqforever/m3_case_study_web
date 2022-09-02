@@ -212,7 +212,7 @@ Thiết kế các chức năng với yêu cầu sau:
 
 2.  Sử dụng Cookie để lưu tên người dùng (username), password (mật khẩu)
     > khi người dùng chọn checkbox "Remember me", ngược lại thì sẽ không
-    > lưu ở Cookie.
+    lưu ở Cookie.
 
 ##  
 

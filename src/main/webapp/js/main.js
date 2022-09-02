@@ -1,4 +1,4 @@
-document.querySelector("main").style.height= window.innerHeight - 150 + "px";
+document.querySelector("main").style.height = window.innerHeight - 150 + "px";
 
 function showEditCustomer(id, fullName, birthday, gender, identifyNumber, phone, email, address, customerTypeId) {
     $(".modal-title").text("Edit Customer");
@@ -22,3 +22,10 @@ function resetCustomerForm() {
     $("input[name='id']").val("0");
     $("input[name='fullName'],input[name='birthday'],input[name='identifyNumber'],input[name='phone'],input[name='email'],input[name='address']").val("");
 }
+
+function deleteItem(id, name) {
+    $("#titleDelete").text(name);
+    $("#idDelete").val(id);
+}
+
+

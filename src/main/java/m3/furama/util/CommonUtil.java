@@ -9,4 +9,13 @@ public class CommonUtil {
             return 0;
         }
     }
+
+    public static Double toDouble(String val){
+        try {
+            return Double.parseDouble(val);
+        }
+        catch (Exception e){
+            return 0.0;
+        }
+    }
 }

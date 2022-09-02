@@ -24,25 +24,26 @@
     <th>Action</th>
     </thead>
     <tbody>
-    <c:forEach items="${result.getContent()}" var="c" varStatus="i">
+    <c:forEach items="${result.getContent()}" var="r" varStatus="i">
         <tr>
             <td>${i.count + (result.getNumber() -1) * result.getPageSize()}</td>
-            <td>${c.fullName}</td>
-            <td>${c.birthday}</td>
-            <td>${c.email}</td>
-            <td>${c.customerType.name}</td>
+            <td>${r.fullName}</td>
+            <td>${r.birthday}</td>
+            <td>${r.email}</td>
+            <td>${r.customerType.name}</td>
             <td>
-                <button onclick="showEditCustomer('${c.id}', '${c.fullName}', '${c.birthday}', '${c.gender}'
-                        , '${c.identifyNumber}', '${c.phone}', '${c.email}', '${c.address}', '${c.customerTypeId}')"
+                <button onclick="showEditCustomer('${r.id}', '${r.fullName}', '${r.birthday}', '${r.gender}'
+                        , '${r.identifyNumber}', '${r.phone}', '${r.email}', '${r.address}', '${r.customerTypeId}')"
                         class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addEditModal">Edit
                 </button>
-                <cg:delete idItem="${c.id}" nameItem="${c.fullName}"></cg:delete>
+                <button onclick="deleteItem('${r.id}','${r.fullName}')" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
             </td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 <cg:paging name="customer" params="${result}" search="${by}:${val}"></cg:paging>
+<cg:delete></cg:delete>
 
 <div class="modal fade" id="addEditModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">

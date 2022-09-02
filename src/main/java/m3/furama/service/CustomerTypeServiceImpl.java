@@ -2,6 +2,8 @@ package m3.furama.service;
 
 import m3.furama.model.CustomerType;
 import m3.furama.repository.CustomerTypeRepository;
+import m3.furama.util.Page;
+import m3.furama.util.Pageable;
 
 import java.util.List;
 
@@ -11,6 +13,11 @@ public class CustomerTypeServiceImpl implements CustomerTypeService{
     @Override
     public List<CustomerType> findAll() {
         return customerTypeRepository.findAll();
+    }
+
+    @Override
+    public Page<CustomerType> findAll(Pageable pageable) {
+        return null;
     }
 
     @Override

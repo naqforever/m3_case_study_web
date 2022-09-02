@@ -23,9 +23,6 @@ public class CustomerRepository implements BaseRepository<Customer> {
             ", email, address, customer_type_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String UPDATE = "update customer set fullname = ?,  birthday = ?, gender=?, identify_number =? , phone=?" +
             ", email = ?, address = ?, customer_type_id = ? where id = ?";
-//    private static final String FIND_BY = "select * from product p join category c on p.category_id = c.id where p.$ like ?";
-//    private static final String FIND = "select * from product p join category c on p.category_id = c.id where p.name like '%?%' or p.color like '%?%' or p.price like '%?%' or c.name like '%?%'";
-//    private static final String CREATE = "insert into product (name, color, price, category_id) values (?,?,?,?)";
     private static final String DELETE = "delete from customer where id = ?";
 
     @Override
@@ -68,18 +65,6 @@ public class CustomerRepository implements BaseRepository<Customer> {
     @Override
     public List<Customer> find(String q) {
         return null;
-    }
-
-    @Override
-    public int delete(int id) {
-        try(PreparedStatement st = Config.getConnection().prepareStatement(DELETE)){
-            st.setInt(1, id);
-            return st.executeUpdate();
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
-
-        return 0;
     }
 
     private Customer getCustomer(ResultSet rs) throws SQLException {

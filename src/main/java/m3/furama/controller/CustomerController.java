@@ -6,9 +6,7 @@ import m3.furama.service.CustomerServiceImpl;
 import m3.furama.service.CustomerTypeService;
 import m3.furama.service.CustomerTypeServiceImpl;
 import m3.furama.util.CommonUtil;
-import m3.furama.util.Page;
 import m3.furama.util.PageHelper;
-import m3.furama.util.Pageable;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.List;
 
 @WebServlet(name = "CustomerController", value = "/customer")
 public class CustomerController extends HttpServlet {

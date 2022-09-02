@@ -26,16 +26,6 @@
     <tag>
         <name>delete</name>
         <tag-class>m3.furama.util.DeleteTag</tag-class>
-        <attribute>
-            <name>idItem</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-        <attribute>
-            <name>nameItem</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
     </tag>
 
 </taglib>

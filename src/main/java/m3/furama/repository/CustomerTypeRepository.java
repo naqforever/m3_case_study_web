@@ -45,9 +45,4 @@ public class CustomerTypeRepository implements BaseRepository<CustomerType>{
     public List<CustomerType> find(String q) {
         return null;
     }
-
-    @Override
-    public int delete(int id) {
-        return 0;
-    }
 }
