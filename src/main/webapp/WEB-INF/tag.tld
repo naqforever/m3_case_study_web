@@ -28,4 +28,21 @@
         <tag-class>m3.furama.util.DeleteTag</tag-class>
     </tag>
 
+    <tag>
+        <name>table</name>
+        <tag-class>m3.furama.util.TableTag</tag-class>
+        <attribute>
+            <name>header</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>column</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>result</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
 </taglib>

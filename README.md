@@ -127,21 +127,20 @@ Thiết kế các chức năng với yêu cầu sau:
 1.  Tạo màn hình thêm mới 1 Khách hàng (sử dụng bảng **customer**)
 
 2.  Tạo màn hình liệt kê danh sách Khách hàng (Dạng bảng, có phân trang,
-    > nhảy trang, tìm kiếm, liên kết đến các chức năng xóa và chỉnh sửa
-    > thông tin của Khách hàng).
+     nhảy trang, tìm kiếm, liên kết đến các chức năng xóa và chỉnh sửa
+     thông tin của Khách hàng).
 
 3.  Tạo màn hình thêm mới 1 Dịch vụ (sử dụng bảng **service**)
 
 4.  Tạo màn hình thêm mới 1 Nhân viên (sử dụng bảng **employee**)
 
 5.  Tạo màn hình liệt kê danh sách Nhân viên (Dạng bảng, có phân trang,
-    > nhảy trang, tìm kiếm, liên kết đến các chức năng xóa và chỉnh sửa
-    > thông tin của Nhân viên).
+     nhảy trang, tìm kiếm, liên kết đến các chức năng xóa và chỉnh sửa
+     thông tin của Nhân viên).
 
 6.  Tạo màn hình thêm mới 1 Hợp đồng (sử dụng bảng **contract**)
 
-7.  Tạo màn hình thêm mới 1 Hợp đồng chi tiết (sử dụng bảng
-    > **contract_detail**)
+7.  Tạo màn hình thêm mới 1 Hợp đồng chi tiết (sử dụng bảng **contract_detail**)
 
 8.  Tạo màn hình liệt kê danh sách các khách hàng đang sử dụng dịch vụ
     > tại resort (Dạng bảng, có phân trang, nhảy trang, tìm kiếm, liên

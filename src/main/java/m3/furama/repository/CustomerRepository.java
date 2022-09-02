@@ -23,7 +23,6 @@ public class CustomerRepository implements BaseRepository<Customer> {
             ", email, address, customer_type_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String UPDATE = "update customer set fullname = ?,  birthday = ?, gender=?, identify_number =? , phone=?" +
             ", email = ?, address = ?, customer_type_id = ? where id = ?";
-    private static final String DELETE = "delete from customer where id = ?";
 
     @Override
     public List<Customer> findAll() {
