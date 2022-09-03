@@ -36,13 +36,13 @@
                         , '${r.identifyNumber}', '${r.phone}', '${r.email}', '${r.address}', '${r.customerTypeId}')"
                         class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addEditModal">Edit
                 </button>
-                <button onclick="deleteItem('${r.id}','${r.fullName}')" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                <button onclick="deleteItem('${r.id}')" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
             </td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
-<cg:paging name="customer" params="${result}" search="${by}:${val}"></cg:paging>
+<cg:paging params="${result}" search="${by}:${val}"></cg:paging>
 <cg:delete></cg:delete>
 
 <div class="modal fade" id="addEditModal" tabindex="-1" aria-hidden="true">

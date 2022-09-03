@@ -23,9 +23,10 @@ function resetCustomerForm() {
     $("input[name='fullName'],input[name='birthday'],input[name='identifyNumber'],input[name='phone'],input[name='email'],input[name='address']").val("");
 }
 
-function deleteItem(id, name) {
-    $("#titleDelete").text(name);
+function deleteItem(id) {
     $("#idDelete").val(id);
+    $("#titleDelete").text(document.title);
+
 }
 
 

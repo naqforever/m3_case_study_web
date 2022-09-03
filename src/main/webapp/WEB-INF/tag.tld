@@ -8,10 +8,6 @@
         <name>paging</name>
         <tag-class>m3.furama.util.PagingTag</tag-class>
         <attribute>
-            <name>name</name>
-            <required>true</required>
-        </attribute>
-        <attribute>
             <name>params</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
@@ -26,6 +22,27 @@
     <tag>
         <name>delete</name>
         <tag-class>m3.furama.util.DeleteTag</tag-class>
+    </tag>
+
+    <tag>
+        <name>addEdit</name>
+        <tag-class>m3.furama.util.AddEditTag</tag-class>
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>exclude</name>
+        </attribute>
+        <attribute>
+            <name>radio</name>
+        </attribute>
+        <attribute>
+            <name>checkbox</name>
+        </attribute>
+        <attribute>
+            <name>select</name>
+        </attribute>
     </tag>
 
     <tag>

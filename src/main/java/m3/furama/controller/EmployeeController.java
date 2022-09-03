@@ -1,9 +1,7 @@
 package m3.furama.controller;
 
-import m3.furama.model.Employee;
 import m3.furama.service.EmployeeService;
 import m3.furama.service.EmployeeServiceImpl;
-import m3.furama.util.Page;
 import m3.furama.util.PageHelper;
 
 import javax.servlet.ServletException;

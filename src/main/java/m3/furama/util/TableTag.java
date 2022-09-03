@@ -1,11 +1,7 @@
 package m3.furama.util;
 
-import m3.furama.model.Employee;
-
 import javax.servlet.ServletRequest;
 import javax.servlet.jsp.tagext.TagSupport;
-import java.util.Arrays;
-import java.util.List;
 
 public class TableTag  extends TagSupport {
     private String header;
@@ -28,9 +24,8 @@ public class TableTag  extends TagSupport {
     public int doStartTag() {
         try {
             ServletRequest request= pageContext.getRequest();
-            List<String> a = Arrays.asList(header.split(","));
-            request.setAttribute("headers", a);
-            request.setAttribute("column", column.split(","));
+            request.setAttribute("headers", header.split(","));
+            request.setAttribute("columns", column.split(","));
             request.setAttribute("result", result);
 
             pageContext.include("/view/element/table.jsp");

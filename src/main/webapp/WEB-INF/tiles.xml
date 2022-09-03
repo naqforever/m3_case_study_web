@@ -23,7 +23,7 @@
         <put-attribute name="body" value="/view/page/service.jsp" />
     </definition>
     <definition name="employee" extends="base">
-        <put-attribute name="title" value="service" />
+        <put-attribute name="title" value="employee" />
         <put-attribute name="body" value="/view/page/employee.jsp" />
     </definition>
 </tiles-definitions>

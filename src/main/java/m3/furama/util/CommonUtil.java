@@ -69,7 +69,7 @@ public class CommonUtil {
         return result;
     }
 
-    private static List<Field> getAllFields(Class clazz) {
+    public static List<Field> getAllFields(Class clazz) {
         if (clazz == null) {
             return Collections.emptyList();
         }

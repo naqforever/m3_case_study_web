@@ -4,16 +4,11 @@ import javax.servlet.ServletRequest;
 import javax.servlet.jsp.tagext.TagSupport;
 
 public class PagingTag extends TagSupport {
-    private String name;
     private Object search;
     private Object params;
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSearch(Object search){
-        this.search= search;
+    public void setSearch(Object search) {
+        this.search = search;
     }
 
     public void setParams(Object params) {
@@ -23,16 +18,14 @@ public class PagingTag extends TagSupport {
     @Override
     public int doStartTag() {
         try {
-            ServletRequest request= pageContext.getRequest();
+            ServletRequest request = pageContext.getRequest();
 
-            if(search.equals(":") || search == null){
+            if (search.equals(":") || search == null) {
                 search = null;
-            }
-            else{
+            } else {
                 search = "&q=" + search;
             }
 
-            request.setAttribute("name", name);
             request.setAttribute("search", search);
             request.setAttribute("result", params);
 
