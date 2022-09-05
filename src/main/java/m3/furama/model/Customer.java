@@ -1,5 +1,8 @@
 package m3.furama.model;
 
+import m3.furama.util.annotation.Extra;
+import m3.furama.util.annotation.IsAssociate;
+
 import java.time.LocalDate;
 
 public class Customer {
@@ -11,10 +14,12 @@ public class Customer {
     private String phone;
     private String email;
     private String address;
+    @IsAssociate(table = "customer_type")
     private int customerTypeId;
-    private CustomerType customerType;
+    @Extra
+    private String customerTypeName;
 
-    public Customer(int id, String fullName, LocalDate birthday, Boolean gender, String identifyNumber, String phone, String email, String address, int customerTypeId, CustomerType customerType) {
+    public Customer(int id, String fullName, LocalDate birthday, Boolean gender, String identifyNumber, String phone, String email, String address, int customerTypeId, String customerTypeName) {
         this.id = id;
         this.fullName = fullName;
         this.birthday = birthday;
@@ -24,7 +29,7 @@ public class Customer {
         this.email = email;
         this.address = address;
         this.customerTypeId = customerTypeId;
-        this.customerType = customerType;
+        this.customerTypeName = customerTypeName;
     }
 
     public int getId() {
@@ -99,11 +104,11 @@ public class Customer {
         this.customerTypeId = customerTypeId;
     }
 
-    public CustomerType getCustomerType() {
-        return customerType;
+    public String getCustomerType() {
+        return customerTypeName;
     }
 
-    public void setCustomerType(CustomerType customerType) {
-        this.customerType = customerType;
+    public void setCustomerType(String customerTypeName) {
+        this.customerTypeName = customerTypeName;
     }
 }

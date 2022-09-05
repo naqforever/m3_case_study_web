@@ -17,10 +17,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static m3.furama.util.Query.entityName;
-
 public class GenericRepository {
-    public void setEntityName(String entityName) {
+    private String entityName;
+
+    public GenericRepository(String entityName) {
+        this.entityName = entityName;
         Query.entityName = entityName;
     }
 

@@ -7,7 +7,6 @@ import m3.furama.util.paging.Pageable;
 import java.util.List;
 
 public class GenericService {
-    private GenericRepository genericRepository = new GenericRepository();
     private String entityName;
 
     public void setEntityName(String entityName) {
@@ -15,12 +14,11 @@ public class GenericService {
     }
 
     public List<Object> findAll() {
-        return genericRepository.findAll();
+        return new GenericRepository(entityName).findAll();
     }
 
     public Page<Object> findAll(Pageable pageable) {
-        genericRepository.setEntityName(entityName);
-        return genericRepository.findAll(pageable);
+        return new GenericRepository(entityName).findAll(pageable);
     }
 
     public int save(Object employee) {

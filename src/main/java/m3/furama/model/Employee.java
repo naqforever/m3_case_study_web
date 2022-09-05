@@ -1,5 +1,7 @@
 package m3.furama.model;
 
+import m3.furama.util.annotation.IsAssociate;
+
 import java.time.LocalDate;
 
 public class Employee {
@@ -11,8 +13,11 @@ public class Employee {
     private String phone;
     private String email;
     private String address;
+    @IsAssociate(table="position")
     private int positionId;
+    @IsAssociate(table="degree")
     private int degreeId;
+    @IsAssociate(table="department")
     private int departmentId;
 
     public Employee(int id, String fullName, LocalDate birthday, String identifyNumber, Double salary, String phone, String email, String address, int positionId, int degreeId, int departmentId) {

@@ -2,18 +2,21 @@ package m3.furama.util.tag;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import m3.furama.service.GenericService;
 import m3.furama.util.Data;
 import m3.furama.util.DataField;
 import m3.furama.util.CommonUtil;
-import m3.furama.util.ConstantUtil;
+import m3.furama.util.annotation.IsAssociate;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.jsp.tagext.TagSupport;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AddEditTag extends TagSupport {
+    GenericService genericService = new GenericService();
     private String name;
     private String exclude;
     private String radio;
@@ -63,14 +66,28 @@ public class AddEditTag extends TagSupport {
 
             List<DataField> selects = new ArrayList<>();
             if (select != null) {
+
                 String[] tmp = select.split(",");
                 for (int i = 0; i < tmp.length; i++) {
-                    String[] s = tmp[i].split(":");
-                    DataField dataField = new DataField(s[0], s[1]);
+
+                    String table ="";
+                    for (Field f : fields) {
+                        Annotation annotation = f.getAnnotation(IsAssociate.class);
+                        if (annotation instanceof IsAssociate && f.getName().equals(tmp[i])) {
+                            table = ((IsAssociate) annotation).table();
+                        }
+                    }
+                    genericService.setEntityName(CommonUtil.convertToCamelCase(table));
+
                     ArrayList<Data> al = new ArrayList<>();
-                    al.add(new Data("Test1","1"));
-                    al.add(new Data("Test2","2"));
-                    al.add(new Data("Test3","3"));
+                    List<Object>  list = genericService.findAll();
+                    for (int j = 0; j < list.size(); j++) {
+                        String key = CommonUtil.getValueByField(list.get(j), "name").toString();
+                        String value = CommonUtil.getValueByField(list.get(j), "id").toString();
+                        al.add(new Data( key, value));
+                    }
+
+                    DataField dataField = new DataField(tmp[i], CommonUtil.convertToCamelCase(table));
                     dataField.setData(al);
                     selects.add(dataField);
                 }

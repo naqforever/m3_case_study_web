@@ -52,4 +52,39 @@ public class CommonUtil {
 
         return result;
     }
+
+    public static Object getValueByField(Object o, String field) {
+        Object result = null;
+
+        try {
+            Class<?> clazz = o.getClass();
+            Field f = clazz.getDeclaredField(field);
+            f.setAccessible(true);
+            result = f.get(o);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+    public static String convertToSnakeCase(String val) {
+        String regex = "([a-z])([A-Z]+)";
+        String replacement = "$1_$2";
+        return val.replaceAll(regex, replacement).toLowerCase();
+    }
+
+    public static String convertToCamelCase(String str) {
+        str = str.substring(0, 1).toUpperCase() + str.substring(1);
+        StringBuilder builder = new StringBuilder(str);
+
+        for (int i = 0; i < builder.length(); i++) {
+            if (builder.charAt(i) == '_') {
+                builder.deleteCharAt(i);
+                builder.replace(i, i + 1, String.valueOf(Character.toUpperCase(builder.charAt(i))));
+            }
+        }
+
+        return builder.toString();
+    }
 }
