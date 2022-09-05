@@ -31,42 +31,15 @@ public class CommonUtil {
         }
     }
 
-    public static List findAll(String query, Class clazz) {
-        List result = new ArrayList<>();
-
-        try (Connection connection = Config.getConnection();
-             PreparedStatement st = connection.prepareStatement(query)) {
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                Constructor<?> ctor = clazz.getConstructors()[0];
-                List<Field> fields = getAllFields(clazz);
-                Object[] tmp = new Object[fields.size()];
-                for (int i = 0; i < fields.size(); i++) {
-                    Class<?> fieldType = fields.get(i).getType();
-                    switch (fieldType.getSimpleName()) {
-                        case "int":
-                            tmp[i] = rs.getInt(i + 1);
-                            break;
-                        case "String":
-                            tmp[i] = rs.getString(i + 1);
-                            break;
-                        case "LocalDate":
-                            Date date = rs.getDate(i + 1);
-                            tmp[i] = new java.sql.Date(date.getTime()).toLocalDate();
-                            break;
-                        case "Double":
-                            tmp[i] = rs.getDouble(i + 1);
-                            break;
-                    }
-                }
-
-                result.add(ctor.newInstance(tmp));
-            }
-        } catch (Exception e) {
+    public static Class getClazz(String entityName) {
+        String path = "m3.furama.model." + entityName.substring(0, 1).toUpperCase() + entityName.substring(1);
+        try {
+            return Class.forName(path);
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
-        return result;
+        return null;
     }
 
     public static List<Field> getAllFields(Class clazz) {

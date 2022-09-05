@@ -44,8 +44,7 @@ public class AddEditTag extends TagSupport {
     public int doStartTag() {
         try {
             ServletRequest request = pageContext.getRequest();
-            String className = ConstantUtil.MODEL_PATH + name.substring(0, 1).toUpperCase() + name.substring(1);
-            List<Field> fields = CommonUtil.getAllFields(Class.forName(className));
+            List<Field> fields = CommonUtil.getAllFields(CommonUtil.getClazz(name));
             ObjectMapper objectMapper = new ObjectMapper();
 
             List<DataField> radios = new ArrayList<>();
