@@ -2,7 +2,7 @@ package m3.furama.controller;
 
 import m3.furama.service.EmployeeService;
 import m3.furama.service.EmployeeServiceImpl;
-import m3.furama.util.PageHelper;
+import m3.furama.util.paging.PageHelper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

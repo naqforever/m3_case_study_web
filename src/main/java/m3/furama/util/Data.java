@@ -1,4 +1,4 @@
-package m3.furama.model;
+package m3.furama.util;
 
 public class Data {
     private String key;

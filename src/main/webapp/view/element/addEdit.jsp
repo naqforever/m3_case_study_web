@@ -15,6 +15,29 @@
                             <input class="form-control" name="fullName"/>
                         </div>
                     </c:forEach>
+
+                    <c:forEach items="${radios}" var="r">
+                    <div class="mb-3">
+                        <label class="form-label">${r.field}</label>
+                        <c:forEach items="${r.data}" var="d">
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" name="${r.field}" value="${d.value}">
+                                <label class="form-check-label">${d.key}</label>
+                            </div>
+                        </c:forEach>
+                    </div>
+                    </c:forEach>
+
+                    <c:forEach items="${selects}" var="r">
+                        <div class="mb-3">
+                            <label class="form-label">${r.fieldDisplay}</label>
+                            <select name="${r.field}" class="form-select" aria-label="Default select example">
+                                <c:forEach items="${r.data}" var="d">
+                                    <option value="${d.value}">${d.key}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                    </c:forEach>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

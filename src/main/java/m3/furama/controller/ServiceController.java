@@ -4,7 +4,7 @@ import m3.furama.model.Service;
 import m3.furama.service.ServiceService;
 import m3.furama.service.ServiceServiceImpl;
 import m3.furama.util.CommonUtil;
-import m3.furama.util.PageHelper;
+import m3.furama.util.paging.PageHelper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

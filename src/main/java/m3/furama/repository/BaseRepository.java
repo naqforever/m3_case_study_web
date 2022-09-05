@@ -1,8 +1,8 @@
 package m3.furama.repository;
 
 import m3.furama.util.ConstantUtil;
-import m3.furama.util.Page;
-import m3.furama.util.Pageable;
+import m3.furama.util.paging.Page;
+import m3.furama.util.paging.Pageable;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

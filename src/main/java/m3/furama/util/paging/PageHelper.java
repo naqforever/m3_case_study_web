@@ -1,4 +1,4 @@
-package m3.furama.util;
+package m3.furama.util.paging;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

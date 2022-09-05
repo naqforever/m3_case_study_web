@@ -2,8 +2,8 @@ package m3.furama.service;
 
 import m3.furama.model.Employee;
 import m3.furama.repository.EmployeeRepository;
-import m3.furama.util.Page;
-import m3.furama.util.Pageable;
+import m3.furama.util.paging.Page;
+import m3.furama.util.paging.Pageable;
 
 import java.util.List;
 

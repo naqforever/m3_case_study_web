@@ -66,12 +66,12 @@
                     <div class="mb-3">
                         <label class="form-label">Gender</label>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" id="rdMale" name="gender" value="true">Male
-                            <label class="form-check-label" for="rdMale"></label>
+                            <input type="radio" class="form-check-input" id="rdMale" name="gender" value="true">
+                            <label class="form-check-label" for="rdMale">Male</label>
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" id="rdFemale" name="gender" value="false">Female
-                            <label class="form-check-label" for="rdFemale"></label>
+                            <input type="radio" class="form-check-input" id="rdFemale" name="gender" value="false">
+                            <label class="form-check-label" for="rdFemale">Female</label>
                         </div>
                     </div>
                     <div class="mb-3">

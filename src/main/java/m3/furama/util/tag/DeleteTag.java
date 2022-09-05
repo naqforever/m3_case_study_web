@@ -1,4 +1,4 @@
-package m3.furama.util;
+package m3.furama.util.tag;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.jsp.tagext.TagSupport;

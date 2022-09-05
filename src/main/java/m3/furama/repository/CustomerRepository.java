@@ -2,16 +2,15 @@ package m3.furama.repository;
 
 import m3.furama.model.Customer;
 import m3.furama.model.CustomerType;
-import m3.furama.util.Page;
-import m3.furama.util.PageHelper;
-import m3.furama.util.Pageable;
+import m3.furama.util.paging.Page;
+import m3.furama.util.paging.PageHelper;
+import m3.furama.util.paging.Pageable;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

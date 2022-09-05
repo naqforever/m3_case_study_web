@@ -1,6 +1,6 @@
 <%@ page import="java.util.stream.IntStream" %>
 <%@ page import="m3.furama.model.Customer" %>
-<%@ page import="m3.furama.util.Page" %>
+<%@ page import="m3.furama.util.paging.Page" %>
 <%@ page import="java.util.stream.Collectors" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="d-flex justify-content-between">

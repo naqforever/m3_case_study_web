@@ -6,7 +6,7 @@
 
     <tag>
         <name>paging</name>
-        <tag-class>m3.furama.util.PagingTag</tag-class>
+        <tag-class>m3.furama.util.tag.PagingTag</tag-class>
         <attribute>
             <name>params</name>
             <required>true</required>
@@ -21,12 +21,12 @@
 
     <tag>
         <name>delete</name>
-        <tag-class>m3.furama.util.DeleteTag</tag-class>
+        <tag-class>m3.furama.util.tag.DeleteTag</tag-class>
     </tag>
 
     <tag>
         <name>addEdit</name>
-        <tag-class>m3.furama.util.AddEditTag</tag-class>
+        <tag-class>m3.furama.util.tag.AddEditTag</tag-class>
         <attribute>
             <name>name</name>
             <required>true</required>
@@ -47,7 +47,7 @@
 
     <tag>
         <name>table</name>
-        <tag-class>m3.furama.util.TableTag</tag-class>
+        <tag-class>m3.furama.util.tag.TableTag</tag-class>
         <attribute>
             <name>header</name>
             <required>true</required>

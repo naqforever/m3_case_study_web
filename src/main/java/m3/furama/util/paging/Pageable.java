@@ -1,4 +1,4 @@
-package m3.furama.util;
+package m3.furama.util.paging;
 
 public class Pageable {
     private int pageNum = 1;
