@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 public class Employee {
     private int id;
-    private String fullName;
+    private String fullname;
     private LocalDate birthday;
     private String identifyNumber;
     private Double salary;
@@ -20,9 +20,9 @@ public class Employee {
     @IsAssociate(table="department")
     private int departmentId;
 
-    public Employee(int id, String fullName, LocalDate birthday, String identifyNumber, Double salary, String phone, String email, String address, int positionId, int degreeId, int departmentId) {
+    public Employee(int id, String fullname, LocalDate birthday, String identifyNumber, Double salary, String phone, String email, String address, int positionId, int degreeId, int departmentId) {
         this.id = id;
-        this.fullName = fullName;
+        this.fullname = fullname;
         this.birthday = birthday;
         this.salary = salary;
         this.identifyNumber = identifyNumber;
@@ -43,11 +43,11 @@ public class Employee {
     }
 
     public String getFullName() {
-        return fullName;
+        return fullname;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFullName(String fullname) {
+        this.fullname = fullname;
     }
 
     public LocalDate getBirthday() {

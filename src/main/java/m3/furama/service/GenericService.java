@@ -21,8 +21,8 @@ public class GenericService {
         return new GenericRepository(entityName).findAll(pageable);
     }
 
-    public int save(Object employee) {
-        return 0;
+    public int save(Object obj) {
+        return new GenericRepository(entityName).save(obj);
     }
 
     public List<Object> find(String q) {
@@ -30,6 +30,6 @@ public class GenericService {
     }
 
     public int delete(int id) {
-        return 0;
+        return new GenericRepository(entityName).delete(id);
     }
 }

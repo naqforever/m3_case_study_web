@@ -6,6 +6,7 @@ import m3.furama.service.GenericService;
 import m3.furama.util.Data;
 import m3.furama.util.DataField;
 import m3.furama.util.CommonUtil;
+import m3.furama.util.annotation.Extra;
 import m3.furama.util.annotation.IsAssociate;
 
 import javax.servlet.ServletRequest;
@@ -77,7 +78,7 @@ public class AddEditTag extends TagSupport {
                             table = ((IsAssociate) annotation).table();
                         }
                     }
-                    genericService.setEntityName(CommonUtil.convertToCamelCase(table));
+                    genericService.setEntityName(table);
 
                     ArrayList<Data> al = new ArrayList<>();
                     List<Object>  list = genericService.findAll();
@@ -102,22 +103,24 @@ public class AddEditTag extends TagSupport {
                     String tmp = excludes[i];
                     fields.removeIf(e -> e.getName().equals(tmp));
                 }
-
-                for (int i = 0; i < radios.size(); i++) {
-                    String tmp = radios.get(i).getField();
-                    fields.removeIf(e -> e.getName().equals(tmp));
-                }
-
-                for (int i = 0; i < checkboxs.size(); i++) {
-                    String tmp = checkboxs.get(i).getField();
-                    fields.removeIf(e -> e.getName().equals(tmp));
-                }
-
-                for (int i = 0; i < selects.size(); i++) {
-                    String tmp = selects.get(i).getField();
-                    fields.removeIf(e -> e.getName().equals(tmp));
-                }
             }
+
+            for (int i = 0; i < radios.size(); i++) {
+                String tmp = radios.get(i).getField();
+                fields.removeIf(e -> e.getName().equals(tmp));
+            }
+
+            for (int i = 0; i < checkboxs.size(); i++) {
+                String tmp = checkboxs.get(i).getField();
+                fields.removeIf(e -> e.getName().equals(tmp));
+            }
+
+            for (int i = 0; i < selects.size(); i++) {
+                String tmp = selects.get(i).getField();
+                fields.removeIf(e -> e.getName().equals(tmp));
+            }
+
+            fields.removeIf(e-> e.getAnnotation(Extra.class) instanceof Extra);
 
             request.setAttribute("name", name);
             request.setAttribute("fields", fields);

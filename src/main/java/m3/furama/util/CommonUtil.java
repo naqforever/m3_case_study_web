@@ -2,11 +2,14 @@ package m3.furama.util;
 
 import m3.furama.repository.Config;
 
+import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -32,7 +35,7 @@ public class CommonUtil {
     }
 
     public static Class getClazz(String entityName) {
-        String path = "m3.furama.model." + entityName.substring(0, 1).toUpperCase() + entityName.substring(1);
+        String path = "m3.furama.model." + convertToCamelCase(entityName);
         try {
             return Class.forName(path);
         } catch (ClassNotFoundException e) {
@@ -86,5 +89,53 @@ public class CommonUtil {
         }
 
         return builder.toString();
+    }
+
+    public static Object mapToObject(HttpServletRequest req){
+        String entityName = req.getServletPath().substring(1);
+        Class clazz = CommonUtil.getClazz(entityName);
+        List<Field> fields = getAllFields(clazz);
+        List<String> params = new ArrayList<>();
+        for (Field f : fields){
+             String name = f.getName();
+             params.add(req.getParameter(name));
+        }
+
+        return createInstance(clazz, fields, params);
+    }
+
+    private static Object createInstance(Class clazz,  List<Field> fields, List<String> params) {
+        try {
+            Constructor<?> ctor = clazz.getConstructors()[0];
+            ctor.setAccessible(true);
+
+            Object[] tmp = new Object[fields.size()];
+
+            for (int i = 0; i < fields.size(); i++) {
+                String fileType = fields.get(i).getType().getSimpleName().toLowerCase();
+                switch (fileType) {
+                    case "int":
+                        tmp[i] = Integer.valueOf(params.get(i));
+                        break;
+                    case "double":
+                        tmp[i] = Double.valueOf(params.get(i));
+                        break;
+                    case "boolean":
+                        tmp[i] = Boolean.valueOf(params.get(i));
+                        break;
+                    case "localdate":
+                        tmp[i] = LocalDate.parse(params.get(i));
+                        break;
+                    default:
+                        tmp[i] = params.get(i);
+                }
+            }
+
+            return ctor.newInstance(tmp);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

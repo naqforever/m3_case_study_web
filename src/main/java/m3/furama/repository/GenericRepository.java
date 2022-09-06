@@ -1,8 +1,8 @@
 package m3.furama.repository;
 
 import m3.furama.util.CommonUtil;
-import m3.furama.util.ConstantUtil;
 import m3.furama.util.Query;
+import m3.furama.util.annotation.Extra;
 import m3.furama.util.paging.Page;
 import m3.furama.util.paging.PageHelper;
 import m3.furama.util.paging.Pageable;
@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GenericRepository {
     private String entityName;
@@ -37,9 +38,30 @@ public class GenericRepository {
         return helper.listToPage(list, findAll().size(), pageable);
     }
 
-//    public int save(Employee employee) {
-//        return 0;
-//    }
+    public int save(Object obj) {
+        List<Field> fields = CommonUtil.getAllFields(obj.getClass());
+        fields.removeIf(e-> e.getAnnotation(Extra.class) instanceof Extra);
+        String key = fields.stream().map(e -> e.getName()).skip(1).collect(Collectors.joining(","));
+        String value = fields.stream().map(e -> "?").skip(1).collect(Collectors.joining(","));
+        String query= String.format("insert into %s (%s) values (%s)", CommonUtil.convertToSnakeCase(entityName), CommonUtil.convertToSnakeCase(key), value);
+        try (PreparedStatement st = Config.getConnection().prepareStatement(query)) {
+            for (int i = 0; i < fields.size(); i++) {
+                String t = fields.get(i).getName();
+
+                if(t.equals("id")){
+                    continue;
+                }
+
+                st.setObject(i, CommonUtil.getValueByField(obj, t));
+            }
+
+            return st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
 
     public int delete(int id) {
         try (PreparedStatement st = Config.getConnection().prepareStatement(Query.delete())) {

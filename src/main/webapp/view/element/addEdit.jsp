@@ -8,12 +8,16 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input name="id" hidden value="0">
                     <c:forEach items="${fields}" var="f">
-                        <div class="mb-3">
-                            <label class="form-label">${f.getName()}</label>
-                            <input class="form-control" name="fullName"/>
-                        </div>
+                        <c:if test="${f.getName().equals('id')}">
+                            <input name="id" hidden value="0">
+                        </c:if>
+                        <c:if test="${!f.getName().equals('id')}">
+                            <div class="mb-3">
+                                <label class="form-label">${f.getName()}</label>
+                                <input class="form-control" name="${f.getName()}"/>
+                            </div>
+                        </c:if>
                     </c:forEach>
 
                     <c:forEach items="${radios}" var="r">
