@@ -15,7 +15,7 @@ public interface BaseRepository<T> {
     List<T> find(String q);
 
     default int delete(int id, String tableName){
-        try (PreparedStatement st = Config.getConnection().prepareStatement(ConstantUtil.DELETE.replace("{table}", tableName))) {
+        try (PreparedStatement st = DBConnection.getConnection().prepareStatement(ConstantUtil.DELETE.replace("{table}", tableName))) {
             st.setInt(1, id);
             return st.executeUpdate();
         } catch (SQLException e) {

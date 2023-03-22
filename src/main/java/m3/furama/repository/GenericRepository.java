@@ -44,7 +44,7 @@ public class GenericRepository {
         String key = fields.stream().map(e -> e.getName()).skip(1).collect(Collectors.joining(","));
         String value = fields.stream().map(e -> "?").skip(1).collect(Collectors.joining(","));
         String query= String.format("insert into %s (%s) values (%s)", CommonUtil.convertToSnakeCase(entityName), CommonUtil.convertToSnakeCase(key), value);
-        try (PreparedStatement st = Config.getConnection().prepareStatement(query)) {
+        try (PreparedStatement st = DBConnection.getConnection().prepareStatement(query)) {
             for (int i = 0; i < fields.size(); i++) {
                 String t = fields.get(i).getName();
 
@@ -64,7 +64,7 @@ public class GenericRepository {
     }
 
     public int delete(int id) {
-        try (PreparedStatement st = Config.getConnection().prepareStatement(Query.delete())) {
+        try (PreparedStatement st = DBConnection.getConnection().prepareStatement(Query.delete())) {
             st.setInt(1, id);
             return st.executeUpdate();
         } catch (SQLException e) {
@@ -77,7 +77,7 @@ public class GenericRepository {
     private List findAll(String query, Class clazz) {
         List result = new ArrayList<>();
 
-        try (Connection connection = Config.getConnection();
+        try (Connection connection = DBConnection.getConnection();
              PreparedStatement st = connection.prepareStatement(query)) {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {

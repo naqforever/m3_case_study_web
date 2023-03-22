@@ -35,7 +35,7 @@ public class ServiceRepository implements BaseRepository<Service>{
 
     @Override
     public int save(Service service) {
-        try (PreparedStatement st = Config.getConnection().prepareStatement(INSERT)) {
+        try (PreparedStatement st = DBConnection.getConnection().prepareStatement(INSERT)) {
             st.setString(1, service.getName());
             st.setInt(2, service.getArea());
             st.setDouble(3, service.getPrice());
@@ -80,7 +80,7 @@ public class ServiceRepository implements BaseRepository<Service>{
     private List<Service> findAll(String query) {
         List<Service> result = new ArrayList<>();
 
-        try (Connection connection = Config.getConnection();
+        try (Connection connection = DBConnection.getConnection();
              PreparedStatement st = connection.prepareStatement(query)) {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {

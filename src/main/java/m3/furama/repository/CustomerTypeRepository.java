@@ -17,7 +17,7 @@ public class CustomerTypeRepository implements BaseRepository<CustomerType>{
     public List<CustomerType> findAll() {
         List<CustomerType> result = new ArrayList<>();
 
-        try(PreparedStatement st = Config.getConnection().prepareStatement(SELECT_ALL)) {
+        try(PreparedStatement st = DBConnection.getConnection().prepareStatement(SELECT_ALL)) {
             ResultSet rs = st.executeQuery();
             while(rs.next()){
                 int id = rs.getInt("id");
